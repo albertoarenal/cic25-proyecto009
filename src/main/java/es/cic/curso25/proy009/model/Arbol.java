@@ -3,6 +3,8 @@ package es.cic.curso25.proy009.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,8 +25,9 @@ public class Arbol {
 
     private double altura;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private List<Rama> ramas= new ArrayList<>();
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE,CascadeType.ALL }, mappedBy = "arbol")
+    @JsonIgnore
+    private List<Rama> ramas = new ArrayList<>();
 
     private boolean caducifolio;
 

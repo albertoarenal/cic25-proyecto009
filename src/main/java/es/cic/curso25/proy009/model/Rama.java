@@ -1,11 +1,14 @@
 package es.cic.curso25.proy009.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Version;
 
@@ -25,6 +28,8 @@ public class Rama {
 
     private boolean podrida;
 
+    @ManyToOne (optional = false)
+    private Arbol arbol;
 
     public Long getId() {
         return id;
@@ -95,6 +100,14 @@ public class Rama {
     public String toString() {
         return "Rama [id=" + id + ", version=" + version + ", colorHojas=" + colorHojas + ", formaHojas=" + formaHojas
                 + ", podrida=" + podrida + "]";
+    }
+
+    public Arbol getArbol() {
+        return arbol;
+    }
+
+    public void setArbol(Arbol arbol) {
+        this.arbol = arbol;
     }
 
 }

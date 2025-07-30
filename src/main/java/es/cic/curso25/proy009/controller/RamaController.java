@@ -37,10 +37,10 @@ public class RamaController {
         return ramaService.get();
     }
 
-    @PostMapping()
-    public Rama create(@RequestBody Rama rama) {
+    @PostMapping("{idArbol}")
+    public Rama create(@PathVariable Long idArbol, @RequestBody Rama rama) {
 
-        ramaService.create(rama);
+        ramaService.create(idArbol, rama);
 
         return rama;
     }
